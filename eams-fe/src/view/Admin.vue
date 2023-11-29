@@ -1,11 +1,12 @@
 <script setup>
 
+import AsideMenu from "@/components/Admin/AsideMenu.vue";
+import HeaderMenu from "@/components/Admin/HeaderMenu.vue";
+import Main from "@/components/Admin/Main.vue";
 
-import AsideMenu from "@/components/Home/AsideMenu.vue";
-import HeaderMenu from "@/components/Home/HeaderMenu.vue";
-import Main from "@/components/Home/Main.vue";
 
 </script>
+
 <template>
   <div>
     <el-container style="height: 97.5vh;">
@@ -24,11 +25,9 @@ import Main from "@/components/Home/Main.vue";
   </div>
 </template>
 
-
-<style lang="less" scoped>
+<style scoped lang="less">
 .el-header {
   display: contents;
   align-items: center;
 }
-
 </style>
