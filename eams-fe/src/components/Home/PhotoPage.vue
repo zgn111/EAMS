@@ -32,6 +32,10 @@ const urls = [
   'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
   'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
 ]
+
+const handle = () => {
+  console.log('delete')
+}
 </script>
 <style scoped lang="less">
 

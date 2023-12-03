@@ -11,13 +11,13 @@
       </el-icon>
       <span>首页</span>
     </el-menu-item>
-    <el-sub-menu index="/photo">
+    <el-sub-menu index="/album">
       <template #title>
-        <div @click="showAlbum">
+        <div>
           <el-icon>
             <PictureFilled/>
           </el-icon>
-          <span>相册管理</span>
+          <span>相册类别管理</span>
         </div>
       </template>
       <el-menu-item v-for="item in albumCategory" :key="item.index" :index="item.index" @select="item.index">
@@ -26,11 +26,7 @@
         </el-icon>
         <span>{{ item.title }}</span>
       </el-menu-item>
-
     </el-sub-menu>
-    <el-menu-item index="/photo">
-      照片
-    </el-menu-item>
   </el-menu>
 
 </template>
@@ -40,11 +36,12 @@ import {ref} from 'vue'
 import {HomeFilled, PictureFilled, UserFilled, LocationFilled} from '@element-plus/icons-vue'
 import {useStore} from "vuex";
 
-const activeIndex = ref('/')
 
+const activeIndex = ref('/')
 const store = useStore()
 
 const albumCategory = store.state.albumCategory
+
 
 function getIconComponent(icon: string) {
   switch (icon) {
@@ -57,14 +54,10 @@ function getIconComponent(icon: string) {
   }
 }
 
-const showAlbum = () => {
-  console.log('show album')
-
-
-
-}
 const handleSelect = (index: string) => {
   activeIndex.value = index
+  store.commit('setSelectedAlbumCategory', index)
+  console.log(store.state.selectedAlbumCategory)
   console.log(index)
 }
 </script>

@@ -10,13 +10,13 @@ import {HomeFilled, PictureFilled, UserFilled} from "@element-plus/icons-vue";
       @select="handleSelect"
       :router="true"
   >
-    <el-menu-item index="/">
+    <el-menu-item index="/admin">
       <el-icon>
         <HomeFilled/>
       </el-icon>
       <span>首页</span>
     </el-menu-item>
-   <el-menu-item>
+   <el-menu-item index="/admin/album">
       <el-icon>
         <PictureFilled/>
       </el-icon>
@@ -27,9 +27,6 @@ import {HomeFilled, PictureFilled, UserFilled} from "@element-plus/icons-vue";
         <UserFilled/>
       </el-icon>
       <span>用户管理</span>
-    </el-menu-item>
-    <el-menu-item index="/photo">
-      照片
     </el-menu-item>
   </el-menu>
 </template>

@@ -6,6 +6,7 @@ import {LocationFilled, UserFilled} from "@element-plus/icons-vue";
 const store = createStore({
     state() {
         return {
+            selectedAlbumCategory: null,//当前选中的相册分类
             albumCategory: [
                 {
                     index: '/album/people',

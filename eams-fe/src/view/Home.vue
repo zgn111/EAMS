@@ -1,9 +1,9 @@
 <script setup>
 
-
+import Main from "@/components/Home/Main.vue";
 import AsideMenu from "@/components/Home/AsideMenu.vue";
 import HeaderMenu from "@/components/Home/HeaderMenu.vue";
-import Main from "@/components/Home/Main.vue";
+
 
 </script>
 <template>
