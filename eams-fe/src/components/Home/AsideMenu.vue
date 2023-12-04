@@ -20,7 +20,7 @@
           <span>相册类别管理</span>
         </div>
       </template>
-      <el-menu-item v-for="item in albumCategory" :key="item.index" :index="item.index" @select="item.index">
+      <el-menu-item v-for="item in albumCategory" :key="item.path" :index="item.path" @select="item.path">
         <el-icon>
           <component :is="getIconComponent(item.icon)"/>
         </el-icon>

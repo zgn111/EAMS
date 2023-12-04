@@ -68,8 +68,6 @@
       />
     </el-select>
     <div>
-
-
       <el-upload
           v-model="fileList"
           class="upload-picture"

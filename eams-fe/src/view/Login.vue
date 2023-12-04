@@ -1,8 +1,10 @@
 <template>
   <div>
     <el-container class="login-page">
-      <el-header>
-        Header
+      <el-header style="display: flex;justify-content: center;align-items: center">
+        <h1>
+          电子相册管理系统登录界面
+        </h1>
       </el-header>
       <el-main>
         <div>
@@ -11,7 +13,6 @@
                    :model="ruleForm"
                    status-icon
                    :rules="rules"
-
           >
             <el-form-item label="账号" label-width="80px" prop="username">
               <el-input v-model="ruleForm.username" placeholder="请输入账号"></el-input>
@@ -19,21 +20,23 @@
             <el-form-item label="密码" label-width="80px" prop="password">
               <el-input v-model="ruleForm.password" placeholder="请输入密码" type="password"></el-input>
             </el-form-item>
-
             <el-form-item class="toRegister">
               <el-link>忘记密码</el-link>
               <el-link href="/register">注册账号</el-link>
             </el-form-item>
             <el-form-item class="submitButton">
-              <el-button style="width: 120px;background-color:" type="primary" @click="submitForm">登录</el-button>
+              <el-button style="width: 120px;" type="primary" @click="submitForm">登录</el-button>
             </el-form-item>
-
-
           </el-form>
         </div>
       </el-main>
       <el-footer>
-        Footer
+        <!--       版权-->
+        <div style="display: flex;justify-content: center;align-items: center">
+          <span>© 2023-</span>
+          <el-link href="">电子相册管理系统</el-link>
+
+        </div>
       </el-footer>
     </el-container>
   </div>
@@ -41,6 +44,7 @@
 <script lang="ts" setup>
 import {reactive, ref} from "vue";
 import type {FormInstance, FormRules} from "element-plus";
+import router from "@/router";
 
 const ruleFormRef = ref<FormInstance>();
 
@@ -80,6 +84,8 @@ const submitForm = () => {
   ruleFormRef.value.validate((valid) => {
     if (valid) {
       console.log('submit!');
+      // 跳转到首页
+      router.replace('/')
     } else {
       console.log('error submit!');
       return false;
@@ -89,9 +95,9 @@ const submitForm = () => {
 
 
 </script>
-<style scoped>
+<style scoped lang="less">
 .login-page {
-  height: 100vh;
+  height: 97.5vh;
 
 }
 

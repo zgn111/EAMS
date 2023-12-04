@@ -1,4 +1,8 @@
 import {createRouter, createWebHistory} from 'vue-router';
+import Home from "@/view/Home.vue";
+import HomePage from "@/components/Home/HomePage.vue";
+import PhotoPage from "@/components/Home/PhotoPage.vue";
+import AlbumPage from "@/components/Home/AlbumPage.vue";
 
 
 //定义路由

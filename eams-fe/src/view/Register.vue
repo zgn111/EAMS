@@ -1,8 +1,10 @@
 <template>
   <div>
     <el-container class="register-page">
-      <el-header>
-        Header
+      <el-header style="display: flex;justify-content: center;align-items: center">
+        <h1>
+          电子相册管理系统注册界面
+        </h1>
       </el-header>
       <el-main>
         <div>
@@ -103,13 +105,14 @@ const submitForm = () => {
 </script>
 
 
-<style scoped>
+<style scoped lang="less">
 .register-page {
-  height: 100vh;
+  height: 97.5vh;
 }
 .register-form {
-  width: 400px;
+  width: 300px;
   margin: 0 auto;
+  padding-top: 100px;
 }
 .submitButton :deep(.el-form-item__content) {
   justify-content: center;
