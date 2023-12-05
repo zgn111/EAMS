@@ -12,8 +12,8 @@
                 #{photoUrl},
                 #{isCover},
                 #{userId},
-                #{adminId},
-                #{photoData})
+                #{adminId}
+            )
     </insert>
     <delete id="deletePhotoById">
         DELETE
@@ -29,8 +29,7 @@
                photo_url         as photoUrl,
                is_cover          as isCover,
                user_id           as userId,
-               admin_id          as adminId,
-               photo_data        as photoData
+               admin_id          as adminId
         from photos
         where album_id = #{albumId}
     </select>

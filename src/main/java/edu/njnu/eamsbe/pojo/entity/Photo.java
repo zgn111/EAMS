@@ -18,5 +18,4 @@ public class Photo {
     private boolean isCover;
     private int userId;
     private int adminId;
-    private byte[] photoData;
 }

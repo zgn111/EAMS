@@ -7,6 +7,7 @@ import edu.njnu.eamsbe.pojo.entity.User;
 import edu.njnu.eamsbe.service.AdminService;
 import edu.njnu.eamsbe.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +26,8 @@ public class AdminController {
      *
      * @return 所有用户信息
      */
-    @PostMapping("/findAllUser")
-    public Result<List<User>> findAllUser() {
+    @PostMapping("/findAllUsers")
+    public Result<List<User>> findAllUsers() {
         return Result.getSuccessResult(adminService.getAllUsers());
     }
 
