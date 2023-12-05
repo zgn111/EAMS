@@ -6,14 +6,8 @@ import java.util.List;
 
 public interface AuthMapper {
 
-    /**
-     * @param user 用户信息
-     * @return 是否登录成功
-     */
-   List<User> findLoginUser(User user);
+    List<User> findUser(User user);
 
-   List<User> findRegisterUser(User user);
-
-   int insertUser(User user);
+    int insertUser(User user);
 
 }

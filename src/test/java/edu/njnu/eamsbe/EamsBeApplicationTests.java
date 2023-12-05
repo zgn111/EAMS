@@ -1,15 +1,14 @@
 package edu.njnu.eamsbe;
 
+import edu.njnu.eamsbe.mapper.AlbumCategoryMapper;
 import edu.njnu.eamsbe.mapper.AuthMapper;
-import edu.njnu.eamsbe.pojo.entity.User;
+import edu.njnu.eamsbe.pojo.entity.AlbumCategory;
 import edu.njnu.eamsbe.service.AuthService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 
 @SpringBootTest
 class EamsBeApplicationTests {
@@ -19,6 +18,8 @@ class EamsBeApplicationTests {
     private AuthService authService;
     @Autowired(required = false)
     private AuthMapper authMapper;
+    @Autowired(required = false)
+    private AlbumCategoryMapper albumCategoryMapper;
 
     @Test
     void contextLoads() {
@@ -27,12 +28,8 @@ class EamsBeApplicationTests {
 
     @Test
     public void test() {
-        User user = new User();
-        user.setUsername("123abc");
-        user.setPassword("123abc1");
-//        System.out.println(authService.login(user));
-        List<User> result = authMapper.findLoginUser(user);
-        System.out.println(result);
+        albumCategoryMapper.deleteAlbumCategoryById(1);
+
 
     }
 

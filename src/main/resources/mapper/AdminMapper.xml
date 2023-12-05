@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njnu.eamsbe.mapper.AdminMapper">
+<!--    todo-->
+    <update id="disableUserById">
+        update users
+        set disabled = 1
+        where user_id = #{userId}
+
+    </update>
+    <delete id="deleteUserById">
+        delete
+        from photos
+        where user_id = #{userId};
+        delete
+        from albums
+        where user_id = #{userId};
+        delete
+        from users
+        where user_id = #{userId}
+    </delete>
+
+
+    <select id="findAllUsers" resultType="edu.njnu.eamsbe.pojo.entity.User">
+        select user_id       as id,
+               user_name     as username,
+               user_password as password,
+               register_date as registerDate,
+               admin_id      as adminId,
+               disabled      as isDisabled
+        from users
+    </select>
+    <select id="findAllAlbums" resultType="edu.njnu.eamsbe.pojo.entity.Album">
+        select album_id as albumId,
+               user_id  as userId,
+               admin_id as adminId,
+               category_id as categoryId,
+                album_name as albumName,
+                album_description as albumDescription,
+                cover_id as coverId
+        from albums
+        where user_id = #{userId}
+    </select>
+    <select id="findAllPhotos" resultType="edu.njnu.eamsbe.pojo.entity.Photo">
+        select photo_id          as photoId,
+               album_id          as albumId,
+               photo_name        as photoName,
+               photo_description as photoDescription,
+               photo_url         as photoUrl,
+               is_cover          as isCover,
+               user_id           as userId,
+               admin_id          as adminId,
+               photo_data        as photoData
+        from photos
+        where album_id = #{albumId}
+    </select>
+</mapper>

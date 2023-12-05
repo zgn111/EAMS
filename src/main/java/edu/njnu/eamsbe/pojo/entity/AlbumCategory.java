@@ -10,13 +10,9 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    private int id;
-    private String username;
-    private String password;
-    private Date registerDate;
-    private int adminId;
-    private boolean isDisabled;
-
-
+public class AlbumCategory {
+    private int categoryId;
+    private String categoryPath;
+    private String categoryName;
+    private Date categoryCreateDate;
 }

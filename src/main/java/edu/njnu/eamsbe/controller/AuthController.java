@@ -21,6 +21,10 @@ public class AuthController {
         return Result.getSuccessResult(authService.login(user));
     }
 
+    @PostMapping("/register")
+    public Result<Boolean> register(User user) {
+        return Result.getSuccessResult(authService.register(user));
+    }
 
 }
 

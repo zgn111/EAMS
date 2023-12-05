@@ -23,7 +23,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public boolean login(User user) {
         //查询数据库中是否存在该用户
-        List<User> result = authMapper.findLoginUser(user);
+        List<User> result = authMapper.findUser(user);
         //如果查询结果为空，则返回false
         return !result.isEmpty();
     }
@@ -31,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public boolean register(User user) {
         //查询数据库中是否存在该用户
-        List<User> result = authMapper.findRegisterUser(user);
+        List<User> result = authMapper.findUser(user);
         //如果查询结果为空，则添加该用户
         if (result.isEmpty()) {
             return authMapper.insertUser(user) == 1;
