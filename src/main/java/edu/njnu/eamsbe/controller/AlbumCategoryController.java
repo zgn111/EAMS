@@ -2,12 +2,11 @@ package edu.njnu.eamsbe.controller;
 
 
 import edu.njnu.eamsbe.pojo.entity.AlbumCategory;
+import edu.njnu.eamsbe.pojo.entity.VO.AlbumCategoryVO;
 import edu.njnu.eamsbe.service.AlbumCategoryService;
 import edu.njnu.eamsbe.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,14 +22,14 @@ public class AlbumCategoryController {
      *
      * @return 相册分类列表
      */
-    @PostMapping("/getAllAlbumCategories")
-    public Result<List<AlbumCategory>> getAllAlbumCategories() {
+    @GetMapping("/getAllAlbumCategories")
+    public Result<List<AlbumCategoryVO>> getAllAlbumCategories() {
         return Result.getSuccessResult(albumCategoryService.getAllAlbumCategory());
     }
 
     @PostMapping("/addAlbumCategory")
-    public Result<Boolean> addAlbumCategory(AlbumCategory albumCategory) {
-        return Result.getSuccessResult(albumCategoryService.addAlbumCategory(albumCategory));
+    public Result<Boolean> addAlbumCategory(String albumCategoryName) {
+        return Result.getSuccessResult(albumCategoryService.addAlbumCategory(albumCategoryName));
     }
 
     @PostMapping("/deleteAlbumCategoryById")

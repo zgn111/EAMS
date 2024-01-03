@@ -8,9 +8,7 @@ import edu.njnu.eamsbe.service.AdminService;
 import edu.njnu.eamsbe.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,32 +25,9 @@ public class AdminController {
      * @return 所有用户信息
      */
     @PostMapping("/findAllUsers")
-    public Result<List<User>> findAllUsers() {
-        return Result.getSuccessResult(adminService.getAllUsers());
+    public Result<List<User>> findAllUsers(int adminId) {
+        return Result.getSuccessResult(adminService.getAllUsers(adminId));
     }
-
-    /**
-     * 获取用户的所有相册
-     *
-     * @param userId 用户id
-     * @return 用户的所有相册
-     */
-    @PostMapping("/findAllAlbums")
-    public Result<List<Album>> findAllAlbum(int userId) {
-        return Result.getSuccessResult(adminService.getAllAlbums(userId));
-    }
-
-    /**
-     * 获取相册的所有照片
-     *
-     * @param albumId 相册id
-     * @return 相册的所有照片
-     */
-    @PostMapping("/findAllPhotos")
-    public Result<List<Photo>> findAllPhoto(int albumId) {
-        return Result.getSuccessResult(adminService.getAllPhotos(albumId));
-    }
-
 
     /**
      * 删除用户
@@ -66,14 +41,15 @@ public class AdminController {
     }
 
     /**
-     * 禁用用户
+     * 禁用或解禁用户
      *
      * @param userId 用户id
-     * @return 是否禁用成功
+     * @return 是否禁用或解禁成功
      */
-    @PostMapping("/disableUserById")
-    public Result<Boolean> disableUserById(int userId) {
-        return Result.getSuccessResult(adminService.disableUserById(userId));
+    @PostMapping("/setUserStatusById")
+    public Result<Boolean> setUserStatusById(int userId,boolean status) {
+        return Result.getSuccessResult(adminService.setUserStatusById(userId,status));
     }
+
 
 }

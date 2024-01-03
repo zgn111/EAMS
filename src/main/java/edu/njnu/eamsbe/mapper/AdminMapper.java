@@ -8,15 +8,11 @@ import java.util.List;
 
 public interface AdminMapper {
 
-    List<User> findAllUsers();
-
-    List<Album> findAllAlbums(int userId);
-
-    List<Photo> findAllPhotos(int albumId);
+    List<User> findAllUsers(int adminId);
 
     int deleteUserById(int userId);
 
-    int disableUserById(int userId);
+    int setUserStatusById(int userId, boolean status);
 
 
 }

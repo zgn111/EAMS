@@ -13,23 +13,7 @@ public interface AdminService {
      *
      * @return 所有用户信息
      */
-    List<User> getAllUsers();
-
-    /**
-     * 获取用户的所有相册
-     *
-     * @param userId 用户id
-     * @return 用户的所有相册
-     */
-    List<Album> getAllAlbums(int userId);
-
-    /**
-     * 获取相册的所有照片
-     *
-     * @param albumId 相册id
-     * @return 相册的所有照片
-     */
-    List<Photo> getAllPhotos(int albumId);
+    List<User> getAllUsers(int adminId);
 
     /**
      * 删除用户
@@ -40,12 +24,13 @@ public interface AdminService {
     boolean deleteUserById(int userId);
 
     /**
-     * 禁用用户
+     * 禁用或启用用户
      *
      * @param userId 用户id
-     * @return 是否禁用成功
+     * @param status 用户状态
+     * @return 是否禁用或启用成功
      */
-    boolean disableUserById(int userId);
+    boolean setUserStatusById(int userId, boolean status);
 
 
 }

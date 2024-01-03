@@ -16,18 +16,9 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
     @Override
-    public List<User> getAllUsers() {
-        return adminMapper.findAllUsers();
-    }
+    public List<User> getAllUsers(int adminId) {
 
-    @Override
-    public List<Album> getAllAlbums(int userId) {
-        return adminMapper.findAllAlbums(userId);
-    }
-
-    @Override
-    public List<Photo> getAllPhotos(int albumId) {
-        return adminMapper.findAllPhotos(albumId);
+        return adminMapper.findAllUsers(adminId);
     }
 
     @Override
@@ -36,7 +27,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean disableUserById(int userId) {
-        return adminMapper.disableUserById(userId) > 0;
+    public boolean setUserStatusById(int userId, boolean status) {
+
+        return adminMapper.setUserStatusById(userId, status) > 0;
+
     }
+
+
 }

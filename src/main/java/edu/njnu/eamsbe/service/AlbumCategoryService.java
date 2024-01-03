@@ -1,6 +1,6 @@
 package edu.njnu.eamsbe.service;
 
-import edu.njnu.eamsbe.pojo.entity.AlbumCategory;
+import edu.njnu.eamsbe.pojo.entity.VO.AlbumCategoryVO;
 
 import java.util.List;
 
@@ -11,15 +11,15 @@ public interface AlbumCategoryService {
      *
      * @return 所有相册分类
      */
-    List<AlbumCategory> getAllAlbumCategory();
+    List<AlbumCategoryVO> getAllAlbumCategory();
 
     /**
      * 添加相册分类
      *
-     * @param albumCategory 相册分类
+     * @param albumCategoryName 相册分类名称
      * @return 是否添加成功
      */
-    boolean addAlbumCategory(AlbumCategory albumCategory);
+    boolean addAlbumCategory(String albumCategoryName);
 
 
     /**

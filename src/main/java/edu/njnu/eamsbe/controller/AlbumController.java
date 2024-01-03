@@ -2,6 +2,7 @@ package edu.njnu.eamsbe.controller;
 
 
 import edu.njnu.eamsbe.pojo.entity.Album;
+import edu.njnu.eamsbe.pojo.entity.VO.AlbumVO;
 import edu.njnu.eamsbe.service.AlbumService;
 import edu.njnu.eamsbe.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,14 @@ public class AlbumController {
     private AlbumService albumService;
 
     /**
-     * 获取所有相册
+     * 获取某相册类别下的所有相册
      *
+     * @param categoryId 相册类别id
      * @return 所有相册
      */
     @PostMapping("/getAllAlbums")
-    public Result<List<Album>> getAllAlbums() {
-        return Result.getSuccessResult(albumService.getAllAlbum());
+    public Result<List<AlbumVO>> getAllAlbums(int categoryId) {
+        return Result.getSuccessResult(albumService.getAllAlbums(categoryId));
     }
 
     /**
@@ -36,6 +38,7 @@ public class AlbumController {
      */
     @PostMapping("/addAlbum")
     public Result<Boolean> addAlbum(Album album) {
+        System.out.println("album = " + album);
         return Result.getSuccessResult(albumService.addAlbum(album));
     }
 
@@ -48,6 +51,11 @@ public class AlbumController {
     @PostMapping("/deleteAlbumById")
     public Result<Boolean> deleteAlbumById(int albumId) {
         return Result.getSuccessResult(albumService.deleteAlbumById(albumId));
+    }
+
+    @PostMapping("/updateAlbumName")
+    public Result<Boolean> updateAlbumName(int albumId, String albumName) {
+        return Result.getSuccessResult(albumService.updateAlbumName(albumId, albumName));
     }
 
 

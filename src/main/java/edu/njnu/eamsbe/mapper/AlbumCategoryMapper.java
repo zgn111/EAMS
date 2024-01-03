@@ -1,12 +1,13 @@
 package edu.njnu.eamsbe.mapper;
 
 import edu.njnu.eamsbe.pojo.entity.AlbumCategory;
+import edu.njnu.eamsbe.pojo.entity.VO.AlbumCategoryVO;
 
 import java.util.List;
 
 public interface AlbumCategoryMapper {
 
-    List<AlbumCategory> findAllAlbumCategory();
+    List<AlbumCategoryVO> findAllAlbumCategory();
 
     int insertAlbumCategory(AlbumCategory albumCategory);
 
