@@ -1,9 +1,4 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import Home from "@/view/Home.vue";
-import HomePage from "@/components/Home/HomePage.vue";
-import PhotoPage from "@/components/Home/PhotoPage.vue";
-import AlbumPage from "@/components/Home/AlbumPage.vue";
-
 
 //定义路由
 const routes = [
@@ -15,11 +10,11 @@ const routes = [
             path: '/',
             component: () => import('@/components/Home/HomePage.vue'),
         }, {
-            path: '/album/:category',
+            path: 'album/:category',
             component: () => import('@/components/Home/AlbumPage.vue'),
         },
             {
-                path: '/album/:category/:albumId',
+                path: 'album/:category/:albumId',
                 component: () => import('@/components/Home/PhotoPage.vue'),
             }
         ]
@@ -40,8 +35,21 @@ const routes = [
         name: 'admin',
         children: [
             {
-                path: '/admin/album',
-                component: () => import('@/components/Home/AlbumPage.vue')
+                path: 'albumCategory',
+                component: () => import('@/components/Admin/AlbumCategoryManage.vue'),
+
+            },
+            {
+                path: 'albumCategory/:categoryId',
+                component: () => import('@/components/Admin/AlbumManage.vue')
+            },
+            {
+                path: 'albumCategory/:categoryId/:albumId',
+                component: () => import('@/components/Admin/PhotoManage.vue')
+            },
+            {
+                path: 'user',
+                component: () => import('@/components/Admin/UserManage.vue')
             }
         ]
     }

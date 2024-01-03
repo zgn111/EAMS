@@ -45,9 +45,12 @@
 import {reactive, ref} from "vue";
 import type {FormInstance, FormRules} from "element-plus";
 import router from "@/router";
+import api from "../api/api";
 
 const ruleFormRef = ref<FormInstance>();
+import {useStore} from "vuex";
 
+const store = useStore()
 
 const validateUsername = (rule, value, callback) => {
   if (value === '') {
@@ -79,13 +82,32 @@ const rules = reactive<FormRules<typeof ruleForm>>({
 });
 
 
-// 提交表单 todo
 const submitForm = () => {
-  ruleFormRef.value.validate((valid) => {
+  ruleFormRef.value.validate(async (valid) => {
     if (valid) {
-      console.log('submit!');
-      // 跳转到首页
-      router.replace('/')
+      // 登录
+      const userData = {
+        username: ruleForm.username,
+        password: ruleForm.password
+      }
+
+      try {
+        const res = await api.login(userData)
+        console.log(res)
+        if (res.data === true) {
+          await router.push('/')
+
+        } else if (res.data === false) {
+          ruleForm.username = ''
+          ruleForm.password = ''
+          setTimeout(() => {
+            alert('账号或密码错误')
+          }, 100)
+        }
+      } catch (e) {
+        console.log(e)
+      }
+
     } else {
       console.log('error submit!');
       return false;
@@ -98,6 +120,7 @@ const submitForm = () => {
 <style scoped lang="less">
 .login-page {
   height: 97.5vh;
+  background-image: url("../assets/login.jpg");
 
 }
 

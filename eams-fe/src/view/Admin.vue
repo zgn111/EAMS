@@ -17,9 +17,7 @@ import Main from "@/components/Admin/Main.vue";
         <el-header>
           <HeaderMenu/>
         </el-header>
-        <el-main>
           <Main/>
-        </el-main>
       </el-container>
     </el-container>
   </div>

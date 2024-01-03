@@ -1,10 +1,32 @@
-<script  setup>
+<script lang="ts" setup>
+import router from "@/router";
+import {onMounted, ref} from "vue";
 
-import {UploadFilled} from "@element-plus/icons-vue";
+const isActive = ref(false)
+const goBack = () => {
+  //如果地址栏中有/admin/albumCategory/xxx/xxx，则返回/admin/albumCategory/xxx，其余情况点击无效，不会跳转
+  const currentPath = window.location.pathname;
+  console.log(currentPath)
+  const regex = /\/admin\/albumCategory\/([^/]+)/;
+  const match = currentPath.match(regex);
+  if (match) {
+    const albumCategoryName = decodeURIComponent(match[1]);
+    router.push('/admin/albumCategory' + '/' + albumCategoryName)
+    isActive.value = true;
+  }
+
+}
+
 </script>
-
+<!--todo bug-->
 <template>
   <div class="header-search">
+    <el-breadcrumb>
+      <el-breadcrumb-item :to="{path: '/admin'}">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{path: '/admin/albumCategory'}">相册分类</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{path: ''}" @click="goBack">相册</el-breadcrumb-item>
+      <el-breadcrumb-item>相册名</el-breadcrumb-item>
+    </el-breadcrumb>
     <div class="user">
       <el-dropdown trigger="click">
         <el-avatar
@@ -47,7 +69,7 @@ import {UploadFilled} from "@element-plus/icons-vue";
 <style scoped lang="less">
 .header-search {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 
 }

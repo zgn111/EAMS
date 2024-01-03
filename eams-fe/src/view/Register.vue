@@ -24,14 +24,18 @@
               <el-input v-model="ruleForm.checkPassword" placeholder="请再次输入密码" type="password"></el-input>
             </el-form-item>
             <el-form-item class="submitButton">
-              <el-button style="width: 120px;background-color:" type="primary" @click="submitForm">注册</el-button>
+              <el-button style="width: 120px;" type="primary" @click="submitForm">注册</el-button>
             </el-form-item>
           </el-form>
         </div>
 
       </el-main>
       <el-footer>
-        Footer
+        <div style="display: flex;justify-content: center;align-items: center">
+          <span>© 2023-</span>
+          <el-link href="">电子相册管理系统</el-link>
+
+        </div>
       </el-footer>
     </el-container>
   </div>
@@ -41,10 +45,12 @@
 <script lang="ts" setup>
 import {reactive, ref} from "vue";
 import type {FormInstance, FormRules} from "element-plus";
+
 const ruleFormRef = ref<FormInstance>();
+import api from "../api/api";
+import router from "@/router";
 
-
-const validateUsername= (rule, value, callback) => {
+const validateUsername = (rule, value, callback) => {
   if (value === '') {
     callback(new Error('请输入账号'));
   } else if (!/^[a-zA-Z0-9]{4,16}$/.test(value)) {
@@ -91,11 +97,33 @@ const rules: FormRules = {
   ]
 };
 
-//todo 提交表单
 const submitForm = () => {
-  ruleFormRef.value.validate((valid) => {
+  ruleFormRef.value.validate(async (valid) => {
     if (valid) {
-      console.log('submit!');
+      // 注册
+      const userData = {
+        username: ruleForm.username,
+        password: ruleForm.password
+      }
+      try {
+        const res = await api.register(userData)
+        console.log(res)
+        if (res.data === true) {
+
+          alert('注册成功')
+          await router.push('/login')
+
+        } else if (res.data === false) {
+          ruleForm.username = ''
+          ruleForm.password = ''
+          ruleForm.checkPassword = ''
+          setTimeout(() => {
+            alert('账号已存在')
+          }, 100)
+        }
+      } catch (e) {
+        console.log(e)
+      }
     } else {
       console.log('error submit!');
       return false;
@@ -108,12 +136,15 @@ const submitForm = () => {
 <style scoped lang="less">
 .register-page {
   height: 97.5vh;
+  background-image: url("../assets/login.jpg");
 }
+
 .register-form {
   width: 300px;
   margin: 0 auto;
   padding-top: 100px;
 }
+
 .submitButton :deep(.el-form-item__content) {
   justify-content: center;
 }

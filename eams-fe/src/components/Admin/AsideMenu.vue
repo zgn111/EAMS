@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 
 import {HomeFilled, PictureFilled, UserFilled} from "@element-plus/icons-vue";
 </script>
@@ -16,13 +16,13 @@ import {HomeFilled, PictureFilled, UserFilled} from "@element-plus/icons-vue";
       </el-icon>
       <span>首页</span>
     </el-menu-item>
-   <el-menu-item index="/admin/album">
+   <el-menu-item index="/admin/albumCategory">
       <el-icon>
         <PictureFilled/>
       </el-icon>
       <span>相册管理</span>
    </el-menu-item>
-    <el-menu-item>
+    <el-menu-item index="/admin/user">
       <el-icon>
         <UserFilled/>
       </el-icon>

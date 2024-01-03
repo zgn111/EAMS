@@ -31,4 +31,5 @@ import HeaderMenu from "@/components/Home/HeaderMenu.vue";
   align-items: center;
 }
 
+
 </style>
