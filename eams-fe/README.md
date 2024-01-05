@@ -1,29 +1,52 @@
-# eams-fe
+# EAMS
 
-This template should help get you started developing with Vue 3 in Vite.
+electronic album management system
 
-## Recommended IDE Setup
+## 项目介绍
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+本项目是软件工程课程的大作业，是一个电子相册管理系统，主要功能有：
 
-## Customize configuration
+1. 用户注册、登录、注销
+2. 用户上传图片
+3. 用户管理相册
+4. 用户管理图片
+5. 用户管理个人信息
+6. 用户管理好友
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 项目结构
 
-## Project Setup
 
-```sh
-npm install
-```
 
-### Compile and Hot-Reload for Development
 
-```sh
-npm run dev
-```
+## 项目分工
 
-### Compile and Minify for Production
+|    学号    | 姓名  |        分工         |
+|:--------:|:---:|:-----------------:|
+| 19210315 | 张桂楠 |     报告撰写和代码实现     |
+| 19210304 | 王双阳 | 各阶段报告内容和结构化PPT、答辩 |
+| 19210311 | 纪安东 |   各阶段报告内容、期末PPT   |
+| 19210313 | 余睿  |   各阶段报告内容和后端设计    |
+| 19210316 | 李绍东 |   各阶段报告内容和后端设计    |
+| 19210331 | 顾逸  | 数据库设计和面向对象PPT、答辩  |
 
-```sh
-npm run build
-```
+## 项目技术栈
+
+### 前端
+
+1. vue.js
+2. element-ui
+3. axios
+4. vue-router
+5. vuex
+
+
+### 后端
+
+1. springboot
+2. mybatis
+3. mysql
+
+## 项目运行
+
+见项目报告
+
