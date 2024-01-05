@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njnu.eamsbe.mapper.PhotoMapper">
+    <insert id="addPhoto">
+        INSERT INTO photos(album_id, photo_name, photo_description, photo_url, is_cover, user_id, admin_id)
+        VALUES (#{albumId},
+                #{photoName},
+                #{photoDescription},
+                #{photoUrl},
+                #{isCover},
+                #{userId},
+                #{adminId})
+    </insert>
+    <update id="updatePhoto">
+        update albums
+        set cover_id = 0
+        where cover_id = #{photoId}
+    </update>
+    <update id="updatePhotoDescription">
+        update photos
+        set photo_description = #{photoDescription}
+        where photo_id = #{photoId}
+    </update>
+    <delete id="deletePhotoById">
+        delete photos,comments
+        from photos
+                 left join comments on photos.photo_id = comments.photo_id
+        where photos.photo_id = #{photoId};
+    </delete>
+    <select id="findPhotoByAlbumId" resultType="edu.njnu.eamsbe.pojo.entity.Photo">
+        select photos.photo_id   as photoId,
+               photos.album_id   as albumId,
+               photo_name        as photoName,
+               photo_description as photoDescription,
+               photo_url         as photoUrl,
+               is_cover          as isCover,
+               photos.user_id    as userId,
+               admin_id          as adminId
+        from photos
+        where photos.album_id = #{albumId}
+
+
+    </select>
+
+
+</mapper>

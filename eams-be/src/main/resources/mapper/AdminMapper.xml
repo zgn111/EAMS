@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njnu.eamsbe.mapper.AdminMapper">
+    <update id="setUserStatusById">
+        update users
+        set disabled = #{status}
+        where user_id = #{userId}
+    </update>
+    <delete id="deleteUserById">
+        DELETE users, photos, albums
+        FROM users
+                 LEFT JOIN photos ON users.user_id = photos.user_id
+                 LEFT JOIN albums ON users.user_id = albums.user_id
+        WHERE users.user_id = #{userId};
+    </delete>
+    <select id="findAllUsers" resultType="edu.njnu.eamsbe.pojo.entity.User">
+        select user_id       as id,
+               user_name     as username,
+               user_password as password,
+               register_date as registerDate,
+               disabled      as isDisabled
+        from users
+        where admin_id = #{adminId}
+    </select>
+</mapper>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射文件，需要和接口完全匹配；通过namesapce匹配接口文件-->
+<mapper namespace="edu.njnu.eamsbe.mapper.AuthMapper">
+    <select id="login" resultType="java.lang.String">
+        select * from users where  user_name= '123abc' and user_password = '123abc'
+    </select>
+</mapper>

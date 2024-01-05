@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njnu.eamsbe.mapper.CommentMapper">
+    <insert id="addComment">
+        #         根据photoId 获取albumId，userId 然后插入
+        insert into comments(contents, user_id, photo_id, album_id)
+        select #{commentContent}, p.user_id, #{photoId}, p.album_id
+        from photos p
+                 join albums a on p.album_id = a.album_id
+        where p.photo_id = #{photoId}
+
+
+    </insert>
+    <delete id="deleteCommentById">
+        delete
+        from comments
+        where comment_id = #{commentId}
+    </delete>
+
+    <select id="findCommentByPhotoId" resultType="edu.njnu.eamsbe.pojo.entity.Comment">
+        select comment_id        as commentId,
+                contents   as commentContent,
+               user_id           as userId,
+               photo_id          as photoId,
+               album_id          as albumId
+        from comments
+        where photo_id = #{photoId}
+    </select>
+</mapper>

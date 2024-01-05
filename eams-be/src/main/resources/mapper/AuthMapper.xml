@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射文件，需要和接口完全匹配；通过namesapce匹配接口文件-->
+<mapper namespace="edu.njnu.eamsbe.mapper.AuthMapper">
+    <insert id="insertUser">
+        insert into users (user_id, user_name, user_password, register_date, admin_id, disabled)
+        values (#{id},
+                #{username},
+                #{password},
+                #{registerDate},
+                #{adminId},
+                #{isDisabled})
+    </insert>
+    <select id="findUser" resultType="edu.njnu.eamsbe.pojo.entity.User">
+        select user_id       as id,
+               user_name     as username,
+               user_password as password,
+               register_date as registerDate,
+               admin_id      as adminId,
+               disabled      as isDisabled
+        from users
+        where user_name = #{username}
+          and user_password = #{password}
+          and disabled = 0
+    </select>
+
+
+</mapper>

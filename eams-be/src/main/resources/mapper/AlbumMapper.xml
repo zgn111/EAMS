@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njnu.eamsbe.mapper.AlbumMapper">
+    <insert id="addAlbum">
+        INSERT INTO albums(user_id, admin_id, category_id, album_name, album_description)
+        VALUES (#{userId},
+                #{adminId},
+                #{categoryId},
+                #{albumName},
+                #{albumDescription});
+    </insert>
+    <update id="updateAlbumName">
+        update albums
+        set album_name = #{albumName}
+        where album_id = #{albumId}
+    </update>
+    <delete id="deleteAlbumById">
+        delete albums, photos
+        from albums
+                 left join photos on albums.album_id = photos.album_id
+        where albums.album_id = #{albumId};
+    </delete>
+    <select id="findAllAlbums" resultType="edu.njnu.eamsbe.pojo.entity.VO.AlbumVO">
+        select albums.album_id as albumId,
+               album_name        as albumName,
+                album_description as albumDescription,
+                cover_id          as coverId,
+                albums.user_id    as userId,
+                category_id       as categoryId,
+                photo_url         as albumCoverUrl
+        from albums
+                 left join photos on albums.cover_id = photos.photo_id
+        where category_id = #{categoryId}
+    </select>
+
+
+</mapper>
